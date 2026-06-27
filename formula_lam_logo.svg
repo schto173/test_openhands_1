@@ -1,0 +1,127 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0d2b1a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff50" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#00ff50" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="gf" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="gf2" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#0a0a0a" rx="20"/>
+  <circle cx="200" cy="200" r="185" fill="url(#bg)"/>
+  <circle cx="200" cy="200" r="192" fill="url(#glow)"/>
+
+  <!-- Outer rings -->
+  <circle cx="200" cy="200" r="188" fill="none" stroke="rgba(0,255,80,0.18)" stroke-width="1.5"/>
+  <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(0,255,80,0.07)" stroke-width="1"/>
+
+  <!-- Speed arc — main glowing arc -->
+  <path d="M 200 28 A 172 172 0 0 1 350 270" fill="none" stroke="#00ff50" stroke-width="3.5" stroke-linecap="round" filter="url(#gf2)" opacity="0.95"/>
+  <path d="M 350 270 A 172 172 0 0 1 50 270"  fill="none" stroke="rgba(0,255,80,0.22)" stroke-width="2"   stroke-linecap="round"/>
+  <path d="M 50 270  A 172 172 0 0 1 200 28"  fill="none" stroke="rgba(0,255,80,0.09)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Arc tick marks (bright) -->
+  <g stroke="#00ff50" stroke-width="2.5" stroke-linecap="round" filter="url(#gf)">
+    <line x1="200" y1="28"  x2="200" y2="44"/>
+    <line x1="291" y1="46"  x2="283" y2="60"/>
+    <line x1="350" y1="133" x2="335" y2="141"/>
+    <line x1="372" y1="200" x2="356" y2="200"/>
+    <line x1="350" y1="270" x2="336" y2="262"/>
+  </g>
+  <!-- Arc tick marks (dim) -->
+  <g stroke="rgba(0,255,80,0.35)" stroke-width="1.5" stroke-linecap="round">
+    <line x1="246" y1="34"  x2="241" y2="48"/>
+    <line x1="323" y1="80"  x2="311" y2="91"/>
+    <line x1="364" y1="164" x2="349" y2="167"/>
+  </g>
+
+  <!-- Hexagon frame -->
+  <polygon points="200,78 275,120 275,204 200,246 125,204 125,120"
+           fill="rgba(0,255,80,0.04)" stroke="#00ff50" stroke-width="2" opacity="0.8"/>
+  <polygon points="200,92  262,127 262,199 200,234 138,199 138,127"
+           fill="rgba(0,0,0,0.55)" stroke="rgba(0,255,80,0.25)" stroke-width="1"/>
+
+  <!-- ===== FORMULA CAR — top-down view, nose pointing UP ===== -->
+
+  <!-- Front wing (wide horizontal bar) -->
+  <rect x="148" y="100" width="104" height="7" rx="3"
+        fill="#00ff50" filter="url(#gf)" opacity="0.9"/>
+
+  <!-- Front wing end plates -->
+  <rect x="148" y="98"  width="6" height="12" rx="1" fill="#00ff50" opacity="0.7"/>
+  <rect x="246" y="98"  width="6" height="12" rx="1" fill="#00ff50" opacity="0.7"/>
+
+  <!-- Front wheels -->
+  <ellipse cx="153" cy="126" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf)"/>
+  <ellipse cx="247" cy="126" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf)"/>
+
+  <!-- Car body — sleek elongated teardrop, nose up -->
+  <path d="M200 105
+           C212 105, 222 115, 224 130
+           L 226 170
+           C 226 185, 220 200, 215 212
+           L 200 220
+           L 185 212
+           C 180 200, 174 185, 174 170
+           L 176 130
+           C 178 115, 188 105, 200 105 Z"
+        fill="rgba(0,255,80,0.08)" stroke="#00ff50" stroke-width="1.8" filter="url(#gf)"/>
+
+  <!-- Cockpit (raised bubble) -->
+  <ellipse cx="200" cy="155" rx="14" ry="20"
+           fill="rgba(0,0,0,0.7)" stroke="#00ff50" stroke-width="1.2" filter="url(#gf)" opacity="0.85"/>
+
+  <!-- Cockpit visor highlight -->
+  <ellipse cx="200" cy="150" rx="7" ry="10"
+           fill="rgba(0,255,80,0.25)" stroke="none"/>
+
+  <!-- Rear wheels -->
+  <ellipse cx="153" cy="195" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf)"/>
+  <ellipse cx="247" cy="195" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf)"/>
+
+  <!-- Rear wing post -->
+  <rect x="198" y="212" width="4" height="10" rx="1" fill="#00ff50" opacity="0.7"/>
+
+  <!-- Rear wing (wide bar) -->
+  <rect x="152" y="220" width="96" height="6" rx="3"
+        fill="#00ff50" filter="url(#gf)" opacity="0.85"/>
+
+  <!-- Rear wing end plates -->
+  <rect x="152" y="218" width="6" height="11" rx="1" fill="#00ff50" opacity="0.6"/>
+  <rect x="242" y="218" width="6" height="11" rx="1" fill="#00ff50" opacity="0.6"/>
+
+  <!-- FORMULA label -->
+  <text x="200" y="275" text-anchor="middle"
+        font-family="'Courier New', Courier, monospace"
+        font-size="13" font-weight="700" letter-spacing="9"
+        fill="rgba(0,255,80,0.55)">FORMULA</text>
+
+  <!-- LAM main lettering -->
+  <text x="200" y="306" text-anchor="middle"
+        font-family="'Courier New', Courier, monospace"
+        font-size="32" font-weight="900" letter-spacing="16"
+        fill="#00ff50" filter="url(#gf)">LAM</text>
+
+  <!-- Bottom label -->
+  <text x="200" y="340" text-anchor="middle"
+        font-family="'Courier New', Courier, monospace"
+        font-size="8.5" font-weight="600" letter-spacing="4"
+        fill="rgba(0,255,80,0.35)">SHELL ECO-MARATHON</text>
+
+  <!-- Glowing dot at arc start -->
+  <circle cx="200" cy="28"  r="5" fill="#00ff50" filter="url(#gf2)"/>
+  <circle cx="350" cy="270" r="4" fill="#00ff50" filter="url(#gf)"  opacity="0.5"/>
+  <circle cx="50"  cy="270" r="3" fill="#00ff50" filter="url(#gf)"  opacity="0.25"/>
+</svg>

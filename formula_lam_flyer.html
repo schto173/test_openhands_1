@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formula LAM – Shell Eco-marathon Team</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .flyer {
+    width: 794px;
+    min-height: 1123px;
+    background: linear-gradient(160deg, #0d1117 0%, #0d2b1a 50%, #0a1a0d 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 55px 50px;
+  }
+
+  /* Background diagonal speed lines */
+  .flyer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -25deg,
+      transparent, transparent 40px,
+      rgba(0,255,80,0.012) 40px, rgba(0,255,80,0.012) 41px
+    );
+    pointer-events: none;
+  }
+
+  /* Top accent bar */
+  .accent-top {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #00ff50, #ffffff, #00ff50, transparent);
+    margin-bottom: 36px;
+  }
+
+  /* School tag */
+  .school-tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    color: #5aff8a;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    opacity: 0.8;
+  }
+
+  /* Logo */
+  .logo-wrap { margin-bottom: 24px; }
+  .logo-svg  { width: 260px; height: 260px; }
+
+  /* Team name block */
+  .name-block {
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .name-formula {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 14px;
+    color: rgba(0,255,80,0.65);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .name-lam {
+    font-family: 'Orbitron', monospace;
+    font-size: 96px;
+    font-weight: 900;
+    color: #00ff50;
+    letter-spacing: 10px;
+    line-height: 1;
+    text-shadow: 0 0 40px #00ff50, 0 0 80px #00cc40;
+    display: block;
+  }
+
+  .headline-sub {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    color: #888;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 32px;
+  }
+
+  /* Divider */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,255,80,0.4), transparent);
+    margin: 24px 0;
+  }
+
+  /* What we do */
+  .what-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 8px;
+    color: #00ff50;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .what-text {
+    font-size: 23px;
+    font-weight: 700;
+    color: #e0e0e0;
+    text-align: center;
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  .what-text span { color: #00ff50; }
+
+  /* Stats */
+  .stats {
+    display: flex;
+    gap: 24px;
+    margin: 20px 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stat-box {
+    flex: 1;
+    max-width: 172px;
+    border: 1px solid rgba(0,255,80,0.25);
+    border-radius: 8px;
+    padding: 20px 14px;
+    text-align: center;
+    background: rgba(0,255,80,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: #00ff50;
+  }
+
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 32px;
+    font-weight: 900;
+    color: #00ff50;
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #777;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 8px;
+    display: block;
+  }
+
+  /* Roles */
+  .roles-section { width: 100%; margin: 18px 0; }
+
+  .roles-title {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 8px;
+    color: #00ff50;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .role-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+    border-left: 2px solid #00ff50;
+    background: rgba(255,255,255,0.03);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .role-icon  { font-size: 20px; flex-shrink: 0; }
+  .role-name  { font-size: 14px; font-weight: 700; color: #ddd; display: block; }
+  .role-desc  { font-size: 11px; color: #555; display: block; margin-top: 2px; }
+
+  /* CTA */
+  .cta-section { width: 100%; margin-top: 26px; text-align: center; }
+
+  .cta-box {
+    border: 2px solid #00ff50;
+    border-radius: 12px;
+    padding: 28px 40px;
+    background: rgba(0,255,80,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,255,80,0.07), transparent);
+    animation: shine 4s infinite;
+  }
+
+  @keyframes shine {
+    0%   { left: -100%; }
+    50%  { left: 150%; }
+    100% { left: 150%; }
+  }
+
+  .cta-headline {
+    font-family: 'Orbitron', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cta-desc {
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .cta-contact {
+    display: inline-block;
+    background: #00ff50;
+    color: #000;
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 13px 34px;
+    border-radius: 6px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .bottom-school { font-size: 12px; color: #3a3a3a; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+
+  .shell-badge {
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    color: #ffcc00;
+    letter-spacing: 2px;
+    font-weight: 700;
+    border: 1px solid rgba(255,204,0,0.3);
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: rgba(255,204,0,0.05);
+  }
+
+  .season-tag { font-size: 12px; color: #3a3a3a; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="flyer">
+  <div class="accent-top"></div>
+
+  <div class="school-tag">Lycée des Arts et Métiers &nbsp;·&nbsp; LAM</div>
+
+  <!-- Embedded logo SVG -->
+  <div class="logo-wrap">
+    <svg class="logo-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bg2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#0d2b1a"/>
+          <stop offset="100%" stop-color="#0a0a0a"/>
+        </radialGradient>
+        <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#00ff50" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#00ff50" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="gf3">
+          <feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="gf4" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="7" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <rect width="400" height="400" fill="#0a0a0a" rx="20"/>
+      <circle cx="200" cy="200" r="185" fill="url(#bg2)"/>
+      <circle cx="200" cy="200" r="192" fill="url(#glow2)"/>
+      <circle cx="200" cy="200" r="188" fill="none" stroke="rgba(0,255,80,0.18)" stroke-width="1.5"/>
+      <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(0,255,80,0.07)" stroke-width="1"/>
+
+      <!-- Speed arc -->
+      <path d="M 200 28 A 172 172 0 0 1 350 270" fill="none" stroke="#00ff50" stroke-width="3.5" stroke-linecap="round" filter="url(#gf4)" opacity="0.95"/>
+      <path d="M 350 270 A 172 172 0 0 1 50 270"  fill="none" stroke="rgba(0,255,80,0.22)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 50 270  A 172 172 0 0 1 200 28"  fill="none" stroke="rgba(0,255,80,0.09)" stroke-width="1.5" stroke-linecap="round"/>
+
+      <g stroke="#00ff50" stroke-width="2.5" stroke-linecap="round" filter="url(#gf3)">
+        <line x1="200" y1="28"  x2="200" y2="44"/>
+        <line x1="291" y1="46"  x2="283" y2="60"/>
+        <line x1="350" y1="133" x2="335" y2="141"/>
+        <line x1="372" y1="200" x2="356" y2="200"/>
+        <line x1="350" y1="270" x2="336" y2="262"/>
+      </g>
+      <g stroke="rgba(0,255,80,0.35)" stroke-width="1.5" stroke-linecap="round">
+        <line x1="246" y1="34"  x2="241" y2="48"/>
+        <line x1="323" y1="80"  x2="311" y2="91"/>
+        <line x1="364" y1="164" x2="349" y2="167"/>
+      </g>
+
+      <!-- Hex frame -->
+      <polygon points="200,78 275,120 275,204 200,246 125,204 125,120"
+               fill="rgba(0,255,80,0.04)" stroke="#00ff50" stroke-width="2" opacity="0.8"/>
+      <polygon points="200,92 262,127 262,199 200,234 138,199 138,127"
+               fill="rgba(0,0,0,0.55)" stroke="rgba(0,255,80,0.25)" stroke-width="1"/>
+
+      <!-- Formula car — top-down, nose pointing up -->
+      <!-- Front wing -->
+      <rect x="148" y="100" width="104" height="7" rx="3" fill="#00ff50" filter="url(#gf3)" opacity="0.9"/>
+      <rect x="148" y="98" width="6" height="12" rx="1" fill="#00ff50" opacity="0.7"/>
+      <rect x="246" y="98" width="6" height="12" rx="1" fill="#00ff50" opacity="0.7"/>
+      <!-- Front wheels -->
+      <ellipse cx="153" cy="126" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf3)"/>
+      <ellipse cx="247" cy="126" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf3)"/>
+      <!-- Car body -->
+      <path d="M200 105 C212 105,222 115,224 130 L226 170 C226 185,220 200,215 212 L200 220 L185 212 C180 200,174 185,174 170 L176 130 C178 115,188 105,200 105 Z"
+            fill="rgba(0,255,80,0.08)" stroke="#00ff50" stroke-width="1.8" filter="url(#gf3)"/>
+      <!-- Cockpit -->
+      <ellipse cx="200" cy="155" rx="14" ry="20" fill="rgba(0,0,0,0.7)" stroke="#00ff50" stroke-width="1.2" filter="url(#gf3)" opacity="0.85"/>
+      <ellipse cx="200" cy="150" rx="7" ry="10" fill="rgba(0,255,80,0.25)"/>
+      <!-- Rear wheels -->
+      <ellipse cx="153" cy="195" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf3)"/>
+      <ellipse cx="247" cy="195" rx="9" ry="16" fill="rgba(0,255,80,0.15)" stroke="#00ff50" stroke-width="1.5" filter="url(#gf3)"/>
+      <!-- Rear wing -->
+      <rect x="198" y="212" width="4" height="10" rx="1" fill="#00ff50" opacity="0.7"/>
+      <rect x="152" y="220" width="96" height="6" rx="3" fill="#00ff50" filter="url(#gf3)" opacity="0.85"/>
+      <rect x="152" y="218" width="6" height="11" rx="1" fill="#00ff50" opacity="0.6"/>
+      <rect x="242" y="218" width="6" height="11" rx="1" fill="#00ff50" opacity="0.6"/>
+
+      <!-- Text -->
+      <text x="200" y="275" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" font-weight="700" letter-spacing="9" fill="rgba(0,255,80,0.55)">FORMULA</text>
+      <text x="200" y="306" text-anchor="middle" font-family="'Courier New',monospace" font-size="32" font-weight="900" letter-spacing="16" fill="#00ff50" filter="url(#gf3)">LAM</text>
+      <text x="200" y="340" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" font-weight="600" letter-spacing="4" fill="rgba(0,255,80,0.35)">SHELL ECO-MARATHON</text>
+
+      <circle cx="200" cy="28"  r="5" fill="#00ff50" filter="url(#gf4)"/>
+      <circle cx="350" cy="270" r="4" fill="#00ff50" filter="url(#gf3)" opacity="0.5"/>
+      <circle cx="50"  cy="270" r="3" fill="#00ff50" filter="url(#gf3)" opacity="0.25"/>
+    </svg>
+  </div>
+
+  <!-- Team name -->
+  <div class="name-block">
+    <span class="name-formula">Formula</span>
+    <span class="name-lam">LAM</span>
+  </div>
+  <div class="headline-sub">Shell Eco-marathon Team</div>
+
+  <div class="divider"></div>
+
+  <!-- What we do -->
+  <div class="what-section">
+    <div class="section-label">What we do</div>
+    <div class="what-text">
+      We <span>design, build &amp; race</span> our own car.<br>
+      One goal: go as <span>far as possible</span> on the least fuel.
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-box">
+      <span class="stat-num">3000+</span>
+      <span class="stat-label">km / liter</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">200+</span>
+      <span class="stat-label">teams global</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">1</span>
+      <span class="stat-label">team · LAM</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Roles -->
+  <div class="roles-section">
+    <div class="roles-title">Who we need</div>
+    <div class="roles-grid">
+      <div class="role-item">
+        <span class="role-icon">⚙️</span>
+        <div>
+          <span class="role-name">Engineers</span>
+          <span class="role-desc">Design &amp; mechanics</span>
+        </div>
+      </div>
+      <div class="role-item">
+        <span class="role-icon">⚡</span>
+        <div>
+          <span class="role-name">Electronics</span>
+          <span class="role-desc">Energy systems</span>
+        </div>
+      </div>
+      <div class="role-item">
+        <span class="role-icon">🏎️</span>
+        <div>
+          <span class="role-name">Drivers</span>
+          <span class="role-desc">Race day pilot</span>
+        </div>
+      </div>
+      <div class="role-item">
+        <span class="role-icon">💻</span>
+        <div>
+          <span class="role-name">Software</span>
+          <span class="role-desc">Data &amp; telemetry</span>
+        </div>
+      </div>
+      <div class="role-item">
+        <span class="role-icon">🎨</span>
+        <div>
+          <span class="role-name">Design</span>
+          <span class="role-desc">Aero &amp; bodywork</span>
+        </div>
+      </div>
+      <div class="role-item">
+        <span class="role-icon">📢</span>
+        <div>
+          <span class="role-name">Comms</span>
+          <span class="role-desc">Social &amp; sponsors</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-box">
+      <div class="cta-headline">Join the team</div>
+      <div class="cta-desc">No experience needed — just passion, curiosity, and drive.</div>
+      <div class="cta-contact">See your teacher · Room [XX]</div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <span class="bottom-school">LAM · Luxembourg</span>
+    <span class="shell-badge">⬡ SHELL ECO-MARATHON</span>
+    <span class="season-tag">Season 2025–26</span>
+  </div>
+</div>
+</body>
+</html>
